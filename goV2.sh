@@ -261,12 +261,12 @@ getVersion(){
     else
         VER="$(/usr/bin/v2ray/v2ray -version 2>/dev/null)"
         RETVAL=$?
-        CUR_VER="$(normalizeVersion "$(echo "$VER" | head -n 1 | cut -d " " -f2)")"
+        CUR_VER="4.31.3"
         TAG_URL="${V6_PROXY}https://api.github.com/repos/v2fly/v2ray-core/releases/latest"
-        NEW_VER="$(normalizeVersion "$(curl ${PROXY} -s "${TAG_URL}" --connect-timeout 10| grep 'tag_name' | cut -d\" -f4)")"
+        NEW_VER="4.31.3"
 
         if [[ "${NEW_VER}" =~ "https" ]]; then
-          NEW_VER="v4.33.0"
+          NEW_VER="v4.31.3"
         fi
         if [[ $? -ne 0 ]] || [[ $NEW_VER == "" ]]; then
             colorEcho ${RED} "Failed to fetch release information. Please check your network or try again."
